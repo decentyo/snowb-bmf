@@ -7,6 +7,7 @@ import ColorStopsHolder, {
   PaletteItem,
 } from './ColorStopsHolder'
 import Palette from '../Palette'
+import Button from '@material-ui/core/Button'
 
 export interface GradientBuilderProps {
   children?: JSX.Element
@@ -138,6 +139,17 @@ const GradientBuilder: FunctionComponent<GradientBuilderProps> = (
           onUpdate={handleUpdate}
           onSelect={(id) => setActiveId(id || 0)}
         />
+        <Button
+          component='label'
+          color='primary'
+          size='small'
+          variant='contained'
+          onClick={() => {
+            handleUpdate({}, true)
+          }}
+        >
+          Remove stop
+        </Button>
         {children
           ? React.cloneElement(children, {
               open: !!activeId || isAdd,
